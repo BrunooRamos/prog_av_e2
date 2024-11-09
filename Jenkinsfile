@@ -40,9 +40,9 @@ pipeline {
         stage('Desplegar Documentación') {
             steps {
                 // Copia la documentación al directorio de destino
-                sh 'cp -r docs/application/* /var/www/html/documentins/'
+                sh 'cp -r doc/application/* /var/www/html/documentins/'
                 // Renombra el archivo 'OrderProcessingSystem.html' a 'usql-traductor.html'
-                sh 'mv /var/www/html/documentins/OrderProcessingSystem.html /var/www/html/documentins/usql-traductor.html'
+                sh 'mv /var/www/html/documentins/OrderProcessingSystem.html /var/www/html/documentins/delivery-sys.html'
             }
         }
     }
