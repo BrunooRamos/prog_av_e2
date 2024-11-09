@@ -31,21 +31,23 @@ pipeline {
 
         stage('Generar Documentación') {
             steps {
-                // Genera la documentación en 'docs/application'
-                // Ajusta este comando si utilizas una herramienta específica para generar la documentación
-                sh 'mvn javadoc:javadoc'
-                // Mover la documentación generada a 'docs/application'
-                sh 'mkdir -p docs/application'
-                sh 'cp -r target/site/apidocs/* docs/application/'
+                dir('source') {
+                    sh 'mvn javadoc:javadoc'
+                    // Verificar que la documentación se generó
+                    sh 'ls -la target/site/apidocs/'
+                    // Crear directorio si no existe
+                    sh 'mkdir -p docs/application'
+                    // Copiar archivos generados
+                    sh 'cp -r target/site/apidocs/* docs/application/'
+                    // Listar archivos copiados
+                    sh 'ls -la docs/application/'
+                }
             }
         }
-
         stage('Desplegar Documentación') {
             steps {
-                // Copia la documentación al directorio de destino
-                sh 'cp -r docs/application/* /var/www/html/documentins/'
-                // Renombra el archivo 'OrderProcessingSystem.html' a 'usql-traductor.html'
-                sh 'mv /var/www/html/documentins/OrderProcessingSystem.html /var/www/html/documentins/usql-traductor.html'
+                // Verificar si el archivo existe antes de copiar
+                sh 'if [ -f source/docs/application/OrderProcessingSystem.html ]; then cp source/docs/application/OrderProcessingSystem.html /var/www/html/documentins/usql-traductor.html; else echo "Archivo no encontrado"; fi'
             }
         }
     }
