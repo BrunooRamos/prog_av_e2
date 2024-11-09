@@ -39,6 +39,7 @@ pipeline {
         stage('Desplegar Documentación') {
             steps {
                 sh 'sudo mv doc/application/OrderProcessingSystem.html /var/www/html/documentins/delivery-sys.html'
+                sh 'sudo mv doc/stylesheet.css /var/www/html/stylesheet.css'
             }
         }
     }
