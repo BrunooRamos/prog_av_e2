@@ -33,10 +33,7 @@ pipeline {
             steps {
                 // Genera la documentación en 'docs/application'
                 // Ajusta este comando si utilizas una herramienta específica para generar la documentación
-                sh 'mvn javadoc:javadoc'
-                // Mover la documentación generada a 'docs/application'
-                sh 'mkdir -p docs/application'
-                sh 'cp -r target/site/apidocs/* docs/application/'
+                sh 'javadoc -d doc -sourcepath src/main/java -subpackages application'
             }
         }
 
