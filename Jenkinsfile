@@ -28,7 +28,6 @@ pipeline {
         //         }
         //     }
         // }
-
         stage('Generar Documentación') {
             steps {
                 // Genera la documentación en 'docs/application'
