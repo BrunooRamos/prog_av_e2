@@ -42,7 +42,7 @@ pipeline {
                 // Copia la documentación al directorio de destino
                 sh 'cp -r doc/application/* /var/www/html/documentins/'
                 // Renombra el archivo 'OrderProcessingSystem.html' a 'usql-traductor.html'
-                sh 'mv /var/www/html/documentins/OrderProcessingSystem.html /var/www/html/documentins/delivery-sys.html'
+                sh 'sudo mv /var/www/html/documentins/OrderProcessingSystem.html /var/www/html/documentins/delivery-sys.html'
             }
         }
     }
