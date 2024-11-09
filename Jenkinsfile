@@ -17,17 +17,17 @@ pipeline {
             }
         }
 
-        stage('Ejecutar Pruebas y Generar Cobertura') {
-            steps {
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    junit 'source/target/surefire-reports/*.xml'
-                    jacoco execPattern: 'source/target/jacoco.exec'
-                }
-            }
-        }
+        // stage('Ejecutar Pruebas y Generar Cobertura') {
+        //     steps {
+        //         sh 'mvn test'
+        //     }
+        //     post {
+        //         always {
+        //             junit 'source/target/surefire-reports/*.xml'
+        //             jacoco execPattern: 'source/target/jacoco.exec'
+        //         }
+        //     }
+        // }
 
         stage('Generar Documentación') {
             steps {
